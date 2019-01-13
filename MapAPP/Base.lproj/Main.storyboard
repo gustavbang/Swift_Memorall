@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dWE-kN-BvI">
+                                <rect key="frame" x="7" y="56" width="200" height="585"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Xah-bb-pzO" appends="YES" id="MRd-bH-0P9"/>
+                                </connections>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-rN-T9L">
+                                <rect key="frame" x="4" y="683" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="rPc-Ye-cKd"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhs-X2-4Wp">
+                                <rect key="frame" x="175" y="660" width="32" height="45"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ra0-Yf-GP8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mhs-X2-4Wp" secondAttribute="trailing" constant="10" id="H84-1O-TOT"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="Izf-Lo-YmS"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="leading" secondItem="WYD-rN-T9L" secondAttribute="leading" id="KxO-cC-d5f"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="trailing" secondItem="mhs-X2-4Wp" secondAttribute="trailing" id="M5G-O9-vEr"/>
+                            <constraint firstItem="WYD-rN-T9L" firstAttribute="top" secondItem="mhs-X2-4Wp" secondAttribute="top" id="NST-YA-PFN"/>
+                            <constraint firstItem="mhs-X2-4Wp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WYD-rN-T9L" secondAttribute="trailing" constant="8" symbolic="YES" id="Qzf-sy-7dw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mhs-X2-4Wp" secondAttribute="bottom" constant="10" id="Z00-JZ-NoF"/>
+                            <constraint firstItem="mhs-X2-4Wp" firstAttribute="top" secondItem="dWE-kN-BvI" secondAttribute="bottom" constant="13" id="ZVI-5U-Fe5"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="woK-bg-bLk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonPressed" destination="mhs-X2-4Wp" id="CEy-ye-URw"/>
+                        <outlet property="mapView" destination="dWE-kN-BvI" id="Bml-yI-aJH"/>
+                        <outlet property="textField" destination="WYD-rN-T9L" id="bIZ-Hc-4aK"/>
+                        <segue destination="VkS-G1-ReS" kind="popoverPresentation" identifier="popSegue" popoverAnchorView="dWE-kN-BvI" id="ivY-6v-0JK">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="Xah-bb-pzO">
+                    <connections>
+                        <action selector="longPressedWithRecognizer:" destination="BYZ-38-t0r" id="ogx-BW-yxW"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="31.875" y="55"/>
+        </scene>
+        <!--Popup View Controller-->
+        <scene sceneID="fQR-Sz-BsM">
+            <objects>
+                <viewController id="VkS-G1-ReS" customClass="PopupViewController" customModule="MapAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="uA3-h5-D9U">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6F-kH-yS3">
+                                <rect key="frame" x="116" y="144" width="44" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="d2S-8U-HXH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveBtnPressed:" destination="VkS-G1-ReS" eventType="touchUpInside" id="qgg-qb-Zg6"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter annotation name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhY-BA-WE7">
+                                <rect key="frame" x="16" y="106" width="268" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" textContentType="location"/>
+                                <connections>
+                                    <action selector="textField:" destination="q5b-05-19Z" eventType="editingDidEnd" id="Mi4-XT-9f2"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8483646373" green="0.8483646373" blue="0.8483646373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="W6F-kH-yS3" firstAttribute="leading" secondItem="xX0-b5-VXs" secondAttribute="leading" constant="116" id="CVC-vc-WfS"/>
+                            <constraint firstItem="W6F-kH-yS3" firstAttribute="top" secondItem="NhY-BA-WE7" secondAttribute="bottom" constant="8" symbolic="YES" id="EqZ-sD-5of"/>
+                            <constraint firstItem="NhY-BA-WE7" firstAttribute="leading" secondItem="uA3-h5-D9U" secondAttribute="leadingMargin" id="UES-6d-Czq"/>
+                            <constraint firstItem="xX0-b5-VXs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W6F-kH-yS3" secondAttribute="trailing" symbolic="YES" id="cmx-9N-Mak"/>
+                            <constraint firstItem="NhY-BA-WE7" firstAttribute="trailing" secondItem="uA3-h5-D9U" secondAttribute="trailingMargin" id="pHQ-Tw-fX8"/>
+                            <constraint firstItem="xX0-b5-VXs" firstAttribute="bottom" secondItem="W6F-kH-yS3" secondAttribute="bottom" constant="20" id="vd0-t7-mrj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xX0-b5-VXs"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="200"/>
+                    <connections>
+                        <outlet property="textField" destination="NhY-BA-WE7" id="hZw-BE-64B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ew7-TD-AwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="q5b-05-19Z" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="734.39999999999998" y="55.772113943028494"/>
+        </scene>
+    </scenes>
+</document>
