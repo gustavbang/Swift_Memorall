@@ -9,8 +9,12 @@
 import MapKit
 class MyAnno: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
-    let title: String?
-    let subtitle: String?
+    var title: String?
+    var subtitle: String?
+    var image: UIImage?
+    var type: String?
+    var descriptionText: String?
+    var identifier = "Pin"
     
     init(title:String, subtitle:String, coordinate:CLLocationCoordinate2D) {
         self.coordinate = coordinate

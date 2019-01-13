@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84413BC521EB513E00973CB0 /* AnnoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */; };
 		8452C47D2154F22F00EFECE1 /* MyAnno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C47C2154F22F00EFECE1 /* MyAnno.swift */; };
 		8452C47F2154FE3E00EFECE1 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */; };
 		849A49342153828B00AC135B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A49332153828B00AC135B /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoDetailViewController.swift; sourceTree = "<group>"; };
 		8452C47C2154F22F00EFECE1 /* MyAnno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnno.swift; sourceTree = "<group>"; };
 		8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		849A49302153828B00AC135B /* MapAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 				849A493F2153828E00AC135B /* Info.plist */,
 				8452C47C2154F22F00EFECE1 /* MyAnno.swift */,
 				8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */,
+				84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */,
 			);
 			path = MapAPP;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84413BC521EB513E00973CB0 /* AnnoDetailViewController.swift in Sources */,
 				849A49362153828B00AC135B /* ViewController.swift in Sources */,
 				8452C47D2154F22F00EFECE1 /* MyAnno.swift in Sources */,
 				849A49342153828B00AC135B /* AppDelegate.swift in Sources */,

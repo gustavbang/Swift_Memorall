@@ -7,22 +7,48 @@
 //
 import UIKit
 
-class PopupViewController: UIViewController {
+class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var shortDescriptionField: UITextField! // Holds subtitle
+    @IBOutlet weak var descriptionField: UITextView! // Holds descriptionText
+    @IBOutlet weak var textField: UITextField! // Holds name / title
+    
     var parentView: ViewController?
+    
+    var imagePicker = UIImagePickerController()
+    
+    var photo = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func saveBtnPressed(_ sender: UIButton) {
-        parentView?.addAnnotation(name: textField.text!)
-        parentView?.dismiss(animated: true, completion: nil)
+    @IBAction func cameraBtn(_ sender: Any) {
+        print("Take a nice photo, dude")
     }
     
+    
+    @IBAction func albumBtn(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func saveBtnPressed(_ sender: UIButton) {
+        parentView?.addAnnotation(name: textField.text!, subtitle: shortDescriptionField.text!, text: descriptionField.text!, picture: photo)
+        parentView?.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        photo = image!
+        dismiss(animated: true, completion: nil)
+
+    }
     /*
     // MARK: - Navigation
 

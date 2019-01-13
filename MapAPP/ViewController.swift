@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var textField: UITextField!
@@ -19,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
+        mapView.delegate = self
         
         // Asks if you allow GPS usage
         locationManager.requestWhenInUseAuthorization()
@@ -56,6 +57,54 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         }
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = MKAnnotationView()
+        
+        // Shouldnt be necessary, only if you use different annotations (fx custom and default)
+        guard let annotation = annotation as? MyAnno
+            else {
+                return nil
+        }
+        if let dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
+            annotationView = dequedView
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+        }
+        
+        // TODO: This needs to load our preset pin type (fx. food, bar, sightseeing)
+        let pinImage = UIImage(named: "download")
+        let pinImageSize = CGSize(width: 30, height: 30)
+        UIGraphicsBeginImageContext(pinImageSize)
+        pinImage!.draw(in: CGRect(x: 0, y: 0, width: pinImageSize.width, height: pinImageSize.height))
+        let resizedPin = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView.image = resizedPin
+        
+        //Shows one line of our subtitle in pin
+        let description = UILabel()
+        description.numberOfLines = 1
+        description.text = annotation.subtitle
+        annotationView.detailCalloutAccessoryView = description
+        annotationView.rightCalloutAccessoryView = UIButton(type: .infoLight)
+        
+        // Shows custom picture in pin
+        let detailImageSize = CGSize(width: 150, height: 150)
+        UIGraphicsBeginImageContext(detailImageSize)
+        annotation.image!.draw(in: CGRect(x: 0, y: 0, width: detailImageSize.width, height: detailImageSize.height))
+        let annotionImageResized = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView.leftCalloutAccessoryView = UIImageView(image: annotionImageResized)
+        
+        // Makes us able to show extra info, such as image or text
+        annotationView.canShowCallout = true
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "annoDetail") as! AnnoDetailViewController
+        
+        vc.annotation = view.annotation as? MyAnno
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func longPressed(recognizer: UILongPressGestureRecognizer) {
         if recognizer.state == .ended { // So you dont make more pins per click
             print("You pressed loooonng time")
@@ -87,8 +136,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
             if id == "popSegue" { // Securing correct segue
                 let destination = segue.destination as! PopupViewController
                 destination.parentView = self
-                destination.preferredContentSize = CGSize(width: 250, height: 100)
-                
+                destination.preferredContentSize = CGSize(width: 300, height: 300)
                 
                 let popPresentationCTRL = destination.popoverPresentationController
                 popPresentationCTRL?.delegate = self
@@ -96,17 +144,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
                 // Centralizing our popover instead of it anchoring in top left corner
                 popPresentationCTRL?.sourceView = self.view
                 popPresentationCTRL?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-               
-
-                
                 
             }
         }
     }
     
-    func addAnnotation(name:String) {
+    func addAnnotation(name: String, subtitle: String, text: String, picture: UIImage) {
         if let coordinate = coordinate2D {
-            let annotation = MyAnno(title: name, subtitle: "Subtitle", coordinate: coordinate)
+            let annotation = MyAnno(title: name, subtitle: subtitle, coordinate: coordinate)
+            annotation.image = picture
+            annotation.descriptionText = text
             mapView.addAnnotation(annotation)
         }
     }
