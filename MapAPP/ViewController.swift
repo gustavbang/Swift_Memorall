@@ -149,11 +149,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    func addAnnotation(name: String, subtitle: String, text: String, picture: UIImage) {
+    func addAnnotation(name: String, subtitle: String, text: String,
+                       picture: UIImage, type: String) {
         if let coordinate = coordinate2D {
             let annotation = MyAnno(title: name, subtitle: subtitle, coordinate: coordinate)
             annotation.image = picture
             annotation.descriptionText = text
+            annotation.type = type
             mapView.addAnnotation(annotation)
         }
     }

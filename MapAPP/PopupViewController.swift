@@ -19,6 +19,8 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var photo = UIImage()
     
+    var type = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +41,7 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     @IBAction func saveBtnPressed(_ sender: UIButton) {
-        parentView?.addAnnotation(name: textField.text!, subtitle: shortDescriptionField.text!, text: descriptionField.text!, picture: photo)
+        parentView?.addAnnotation(name: textField.text!, subtitle: shortDescriptionField.text!, text: descriptionField.text!, picture: photo, type: type)
         parentView?.dismiss(animated: true, completion: nil)
     }
 
@@ -48,6 +50,37 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         photo = image!
         dismiss(animated: true, completion: nil)
 
+    }
+    @IBOutlet weak var typeButton: UIButton!
+    @IBOutlet var typeButtons: [UIButton]!
+    @IBAction func handleSelection(_ sender: Any) {
+        typeButtons.forEach { (button) in
+            UIView.animate(withDuration: 0.3, animations: {
+                button.isHidden = !button.isHidden
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    enum Types: String {
+        case bar = "Bar"
+        case restaurant = "Restaurant"
+    }
+    @IBAction func typePressed(_ sender: UIButton) {
+        guard let title = sender.currentTitle, let types = Types(rawValue: title) else {
+            return
+        }
+        switch types {
+        case .bar:
+            self.type = "Bar"
+            typeButton.setTitle("Bar", for: .normal)
+        case .restaurant:
+            self.type = "Restaurant"
+            typeButton.setTitle("Restaurant", for: .normal)
+        default:
+            print("default")
+        }
+        handleSelection(self)
     }
     /*
     // MARK: - Navigation
