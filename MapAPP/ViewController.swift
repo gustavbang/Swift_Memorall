@@ -190,8 +190,55 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let latitude = String(coordinate.latitude)
             let longitude = String(coordinate.longitude)
             
+            //her kalder vi storage metode og får et imageURL tilbage
+            uploadPinImage(image: picture) { (imageUrl) in
+            }
+            
+            //dette imageURL er en reference, som vi også gerne vil gemme i DB
             let newPinRef = dbRef?.childByAutoId()
             newPinRef?.setValue(["title": name, "subtitle": subtitle, "latitude": latitude, "longitude": longitude, "type": type, "descriptionText": text])
+        }
+    }
+    
+    
+    
+    func uploadPinImage(image: UIImage, completion: @escaping (String) -> Void) {
+        print("1")
+        guard let imageData = image.jpegData(compressionQuality: 1) else {
+            return
+        }
+        
+        //unique id
+        let imageName = NSUUID.init()
+        let storageRef = Storage.storage().reference().child("pinImages").child("\(imageName)")
+        
+        //til at få metadata
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        
+        //laver en task
+        let uploadTask = storageRef.putData(imageData, metadata: meta) { (data, error) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            storageRef.downloadURL(completion: { (url, error) in
+                if (error == nil) {
+                    if let downloadUrl = url {
+                        // Make you download string
+                        let imageUrl = downloadUrl.absoluteString
+                        
+                        
+                        completion(imageUrl)
+                    }
+                } else {
+                    print("fail")
+                }
+            })
+            print(data ?? "NO METADATA")
+            print(error ?? "NO ERROR")
         }
     }
     
