@@ -51,10 +51,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.first!
-        print("New location: \(location)")
-        
-        setRegion(location: location.coordinate)
+        if let location = locations.first {
+            print("New location: \(location)")
+            
+            setRegion(location: location.coordinate)
+        }
     }
     
     func setRegion(location: CLLocationCoordinate2D) {
@@ -88,6 +89,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
         }
         
+        //we force unwrap because we KNOW the image will always be there (it is stored locally).
         var pinImage = UIImage()
         switch annotation.type {
         case "Bar":

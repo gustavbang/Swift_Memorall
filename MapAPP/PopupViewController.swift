@@ -46,11 +46,12 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-        photo = image!
-        dismiss(animated: true, completion: nil)
-
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            photo = image
+            dismiss(animated: true, completion: nil)
+        }
     }
+    
     @IBOutlet weak var typeButton: UIButton!
     @IBOutlet var typeButtons: [UIButton]!
     @IBAction func handleSelection(_ sender: Any) {
