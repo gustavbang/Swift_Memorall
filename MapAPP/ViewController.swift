@@ -191,12 +191,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let longitude = String(coordinate.longitude)
             
             //her kalder vi storage metode og får et imageURL tilbage
-            uploadPinImage(image: picture) { (imageUrl) in
-            }
-            
             //dette imageURL er en reference, som vi også gerne vil gemme i DB
-            let newPinRef = dbRef?.childByAutoId()
-            newPinRef?.setValue(["title": name, "subtitle": subtitle, "latitude": latitude, "longitude": longitude, "type": type, "descriptionText": text])
+            
+            uploadPinImage(image: picture) { (imageUrl) in
+                let newPinRef = self.dbRef?.childByAutoId()
+                newPinRef?.setValue(["title": name, "subtitle": subtitle, "latitude": latitude, "longitude": longitude, "imageUrl": imageUrl, "type": type, "descriptionText": text])
+            }
         }
     }
     
@@ -260,16 +260,34 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     } else {
                         coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
                     }
+                    let imageUrl = dict["imageUrl"] ?? ""
                     let type = dict["type"] ?? ""
                     let descriptionText = dict["descriptionText"] ?? ""
                 
                 
-                    let pin = MyAnno(id: id, title: title, subtitle: subtitle, coordinate: coordinate, type: type, descriptionText: descriptionText)
+                    let pin = MyAnno(id: id, title: title, subtitle: subtitle, imageUrl: imageUrl, coordinate: coordinate, type: type, descriptionText: descriptionText)
                     
-                    //fylder default image
                     if pin.image == nil {
                         pin.image = UIImage(named: "download")
                     }
+                    
+                    print("ImageURL: ", pin.imageUrl)
+                    //fylder default image
+                    if (pin.imageUrl != "") {
+
+                        let storageRef = Storage.storage().reference(forURL: pin.imageUrl!)
+                        
+                        
+                        storageRef.getData(maxSize: 8 * 1024 * 1024, completion: { (data, error) in
+                            if let pic = UIImage(data: data!) {
+                                pin.image = pic
+                            }
+                        })
+                        
+                        
+                        
+                    }
+                    
                     
                     self.annotations.append(pin)
                     self.mapView.addAnnotation(pin)

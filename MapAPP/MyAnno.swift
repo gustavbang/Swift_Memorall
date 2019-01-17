@@ -13,6 +13,7 @@ class MyAnno: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var image: UIImage?
+    var imageUrl: String?
     var type: String?
     var descriptionText: String?
     var identifier = "Pin"
@@ -23,11 +24,12 @@ class MyAnno: NSObject, MKAnnotation {
         self.subtitle = subtitle
     }
     
-    init(id: String, title:String, subtitle:String, coordinate:CLLocationCoordinate2D, type: String, descriptionText: String) {
+    init(id: String, title:String, subtitle:String, imageUrl: String, coordinate:CLLocationCoordinate2D, type: String, descriptionText: String) {
         self.id = id
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
+        self.imageUrl = imageUrl
         self.type = type
         self.descriptionText = descriptionText
     }
