@@ -2,6 +2,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
+import FirebaseStorage
+import FirebaseDatabase
+
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -16,8 +19,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     let locationManager = CLLocationManager()
     
+    //Firebase
+    var dbRef: DatabaseReference?
+    var storage: Storage?
+    
+    //array til at gemme DB data
+    var annotations = [MyAnno]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Firebase
+        dbRef = Database.database().reference().child("pins")
+        storage = Storage.storage()
+        
+        loadPins()
+
+        
         locationManager.delegate = self
         mapView.delegate = self
         
@@ -71,11 +88,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
         }
         
-        // TODO: This needs to load our preset pin type (fx. food, bar, sightseeing)
-        let pinImage = UIImage(named: "download")
+        var pinImage = UIImage()
+        switch annotation.type {
+        case "Bar":
+            pinImage = UIImage(named: "bar")!
+        case "Restaurant":
+            pinImage = UIImage(named: "restaurant")!
+        case "Attraction":
+            pinImage = UIImage(named: "attraction")!
+        case "Hotel":
+            pinImage = UIImage(named: "hotel")!
+        default:
+            pinImage = UIImage(named: "default")!
+        }
+        
         let pinImageSize = CGSize(width: 30, height: 30)
         UIGraphicsBeginImageContext(pinImageSize)
-        pinImage!.draw(in: CGRect(x: 0, y: 0, width: pinImageSize.width, height: pinImageSize.height))
+        pinImage.draw(in: CGRect(x: 0, y: 0, width: pinImageSize.width, height: pinImageSize.height))
         let resizedPin = UIGraphicsGetImageFromCurrentImageContext()
         annotationView.image = resizedPin
         
@@ -157,7 +186,52 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotation.descriptionText = text
             annotation.type = type
             mapView.addAnnotation(annotation)
+            
+            let latitude = String(coordinate.latitude)
+            let longitude = String(coordinate.longitude)
+            
+            let newPinRef = dbRef?.childByAutoId()
+            newPinRef?.setValue(["title": name, "subtitle": subtitle, "latitude": latitude, "longitude": longitude, "type": type, "descriptionText": text])
         }
+    }
+    
+    func loadPins() {
+        dbRef?.queryOrdered(byChild: "title").observe(.value, with: { (snapshot) in
+            //tømmer
+            self.annotations = [MyAnno]()
+            for child in snapshot.children {
+                if let data = child as? DataSnapshot {
+                    let dict = data.value as! [String: String]
+                    
+                    let id = data.key
+                    let title = dict["title"] ?? ""
+                    let subtitle = dict["subtitle"] ?? ""
+
+                    var coordinate: CLLocationCoordinate2D
+                    if let lat = dict["latitude"], let doubleLat = Double(lat), let long = dict["longitude"], let doubleLong = Double(long) {
+                        coordinate = CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong)
+                    } else {
+                        coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                    }
+                    let type = dict["type"] ?? ""
+                    let descriptionText = dict["descriptionText"] ?? ""
+                
+                
+                    let pin = MyAnno(id: id, title: title, subtitle: subtitle, coordinate: coordinate, type: type, descriptionText: descriptionText)
+                    
+                    //fylder default image
+                    if pin.image == nil {
+                        pin.image = UIImage(named: "download")
+                    }
+                    
+                    self.annotations.append(pin)
+                    self.mapView.addAnnotation(pin)
+
+                    
+                    
+                }
+            }
+        })
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {

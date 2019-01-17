@@ -65,6 +65,8 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     enum Types: String {
         case bar = "Bar"
         case restaurant = "Restaurant"
+        case attraction = "Attraction"
+        case hotel = "Hotel"
     }
     @IBAction func typePressed(_ sender: UIButton) {
         guard let title = sender.currentTitle, let types = Types(rawValue: title) else {
@@ -77,6 +79,12 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         case .restaurant:
             self.type = "Restaurant"
             typeButton.setTitle("Restaurant", for: .normal)
+        case .attraction:
+            self.type = "Attraction"
+            typeButton.setTitle("Attraction", for: .normal)
+        case .hotel:
+            self.type = "Hotel"
+            typeButton.setTitle("Hotel", for: .normal)
         default:
             print("default")
         }

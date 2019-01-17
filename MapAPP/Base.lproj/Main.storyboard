@@ -131,7 +131,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="0KO-1l-X2b"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Type">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -171,22 +171,28 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="puH-6m-Ek8"/>
                                         </constraints>
-                                        <state key="normal" title="Brothel? :P">
+                                        <state key="normal" title="Attraction">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="typePressed:" destination="VkS-G1-ReS" eventType="touchUpInside" id="KyN-FK-zlI"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-DP-EfM">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="kwW-br-sKt"/>
+                                        </constraints>
+                                        <state key="normal" title="Hotel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="typePressed:" destination="VkS-G1-ReS" eventType="touchUpInside" id="RsY-yn-Isb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter detailed description here" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GB5-YP-Dr8">
-                                <rect key="frame" x="16" y="159" width="268" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4f-eb-noD">
                                 <rect key="frame" x="118" y="112" width="44" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -197,6 +203,13 @@
                                     <action selector="albumBtn:" destination="VkS-G1-ReS" eventType="touchUpInside" id="r94-rh-EH6"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter detailed description here" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GB5-YP-Dr8">
+                                <rect key="frame" x="16" y="178" width="268" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -215,6 +228,7 @@
                         <outletCollection property="typeButtons" destination="68N-NS-qKe" collectionClass="NSMutableArray" id="nVY-6J-pRu"/>
                         <outletCollection property="typeButtons" destination="vf8-Z2-Vis" collectionClass="NSMutableArray" id="4Ad-h6-cM4"/>
                         <outletCollection property="typeButtons" destination="ale-lb-iVZ" collectionClass="NSMutableArray" id="Z9j-PS-PSF"/>
+                        <outletCollection property="typeButtons" destination="Bwx-DP-EfM" collectionClass="NSMutableArray" id="0wn-1j-w3P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew7-TD-AwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
