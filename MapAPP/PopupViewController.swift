@@ -12,22 +12,20 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var shortDescriptionField: UITextField! // Holds subtitle
     @IBOutlet weak var descriptionField: UITextView! // Holds descriptionText
     @IBOutlet weak var textField: UITextField! // Holds name / title
+    @IBOutlet weak var typeButton: UIButton!
+    @IBOutlet var typeButtons: [UIButton]!
     
+    var photo = UIImage() // Holds chosen / taken image
+    var type = String() // Holds pin type
     var parentView: ViewController?
-    
     var imagePicker = UIImagePickerController()
-    
-    var photo = UIImage()
-    
-    var type = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-
-        // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func cameraBtn(_ sender: Any) {
@@ -35,7 +33,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
-    
     
     @IBAction func albumBtn(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -47,15 +44,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         parentView?.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            photo = image
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @IBOutlet weak var typeButton: UIButton!
-    @IBOutlet var typeButtons: [UIButton]!
     @IBAction func handleSelection(_ sender: Any) {
         typeButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
@@ -65,12 +53,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    enum Types: String {
-        case bar = "Bar"
-        case restaurant = "Restaurant"
-        case attraction = "Attraction"
-        case hotel = "Hotel"
-    }
     @IBAction func typePressed(_ sender: UIButton) {
         guard let title = sender.currentTitle, let types = Types(rawValue: title) else {
             return
@@ -88,11 +70,29 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         case .hotel:
             self.type = "Hotel"
             typeButton.setTitle("Hotel", for: .normal)
-        default:
-            print("default")
         }
         handleSelection(self)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            photo = image
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    // If we touch the screen anywhere keyboard will be dismissed
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    enum Types: String {
+        case bar = "Bar"
+        case restaurant = "Restaurant"
+        case attraction = "Attraction"
+        case hotel = "Hotel"
+    }
+
     /*
     // MARK: - Navigation
 

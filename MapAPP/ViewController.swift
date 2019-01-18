@@ -23,11 +23,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var dbRef: DatabaseReference?
     var storage: Storage?
     
-    //array til at gemme DB data
+    // Array for our annotations (currently not used)
     var annotations = [MyAnno]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        mapView.delegate = self
+        
         //Firebase
         dbRef = Database.database().reference().child("pins")
         storage = Storage.storage()
@@ -35,25 +38,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Initial load and observation of new values (pins)
         loadPins()
         
-        locationManager.delegate = self
-        mapView.delegate = self
-        
         // Asks if you allow GPS usage
         locationManager.requestWhenInUseAuthorization()
         
         // How accurated the GPS is.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        textField.resignFirstResponder()
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("New location: \(location)")
-            
             setRegion(location: location.coordinate)
         }
     }
@@ -73,6 +66,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             mapView.showsUserLocation = false
             return
         }
+    }
+    
+    // In case something goes wrong with locationmanager
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -160,6 +158,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    // Reset map to where you are
+    @IBAction func currentLocationBtn(_ sender: Any) {
+        print("currentLocationBtn pressed")
+        if locationManager.location?.coordinate != nil {
+            self.setRegion(location: (locationManager.location?.coordinate)!)
+        }
+    }
+    
+    
+    // Search button
     @IBAction func goButtonPressed(_ sender: Any) {
         let geoCoder = CLGeocoder() // Magic apple device thingy
         if let adr = textField.text {
@@ -190,6 +198,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    // Uploads pin image and completion makes us able to return imageurl for use in
+    // addannotation to save it in database
     func uploadPinImage(image: UIImage, completion: @escaping (String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
             return
@@ -227,24 +237,29 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    // Queries the database for all pin on load and if any changes happen
     func loadPins() {
         dbRef?.queryOrdered(byChild: "title").observe(.value, with: { (snapshot) in
             // Empties our annotations array, so it is not dublicated
             self.annotations = [MyAnno]()
+            
+            // Each child is a MyAnno object, or will be soon ;-)
             for child in snapshot.children {
                 if let data = child as? DataSnapshot {
-                    let dict = data.value as! [String: String]
+                    let dict = data.value as! [String: String] // Ex. dict["title"] has title as value
                     
                     let id = data.key
                     let title = dict["title"] ?? ""
                     let subtitle = dict["subtitle"] ?? ""
 
+                    // Putting together our coordinate with longitude and latitude
                     var coordinate: CLLocationCoordinate2D
                     if let lat = dict["latitude"], let doubleLat = Double(lat), let long = dict["longitude"], let doubleLong = Double(long) {
                         coordinate = CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong)
                     } else {
                         coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
                     }
+                    
                     let imageUrl = dict["imageUrl"] ?? ""
                     let type = dict["type"] ?? ""
                     let descriptionText = dict["descriptionText"] ?? ""
@@ -266,9 +281,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         pin.image = UIImage(named: "download")
                     }
                     
+                    // Adding pin to both array and map
                     self.annotations.append(pin)
                     self.mapView.addAnnotation(pin)
-
                 }
             }
         })
@@ -295,6 +310,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
             }
         }
+    }
+    
+    // Closing keyboard in searchfield if touch outside of it
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textField.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
