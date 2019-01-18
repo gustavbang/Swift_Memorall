@@ -23,7 +23,7 @@ class AnnoDetailViewController: UIViewController {
         pinTitle.text = annotation.title
         pinDescription.text = annotation.descriptionText
         pinPhoto.image = annotation.image
-
+        
     }
     
     @IBAction func done(_ sender: Any) {

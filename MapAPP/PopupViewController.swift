@@ -26,6 +26,8 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
+        
+        
     }
     
     @IBAction func cameraBtn(_ sender: Any) {

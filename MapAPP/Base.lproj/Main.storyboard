@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dWE-kN-BvI">
-                                <rect key="frame" x="16" y="36" width="343" height="575"/>
+                                <rect key="frame" x="0.0" y="36" width="375" height="575"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Xah-bb-pzO" appends="YES" id="MRd-bH-0P9"/>
@@ -48,29 +48,32 @@
                                     <action selector="currentLocationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ss-c1-Zgc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-rN-T9L">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-rN-T9L">
                                 <rect key="frame" x="76" y="627" width="219" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" searchField="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="219" id="EXw-7Q-r5a"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="street-address"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dWE-kN-BvI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2n0-cE-o9x"/>
                             <constraint firstItem="WYD-rN-T9L" firstAttribute="top" secondItem="dWE-kN-BvI" secondAttribute="bottom" constant="16" id="9YB-Ot-X37"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mhs-X2-4Wp" secondAttribute="bottom" constant="10" id="AHz-qU-vPa"/>
                             <constraint firstItem="mhs-X2-4Wp" firstAttribute="leading" secondItem="WYD-rN-T9L" secondAttribute="trailing" constant="16" id="Og7-aL-nhs"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SAr-E5-oeE"/>
                             <constraint firstItem="WYD-rN-T9L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5t2-Gk-euQ" secondAttribute="trailing" constant="16" id="U5Z-B7-vWe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mhs-X2-4Wp" secondAttribute="bottom" constant="10" id="Z00-JZ-NoF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5t2-Gk-euQ" secondAttribute="bottom" constant="10" id="cqH-UK-EUG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mhs-X2-4Wp" secondAttribute="trailing" constant="16" id="hlU-ik-ZoS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYD-rN-T9L" secondAttribute="bottom" constant="10" id="hmz-tD-4JL"/>
+                            <constraint firstItem="dWE-kN-BvI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nbf-Qi-AkZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYD-rN-T9L" secondAttribute="bottom" constant="10" id="q8l-0c-Vwd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dWE-kN-BvI" secondAttribute="trailing" constant="16" id="qdq-hi-c0y"/>
                             <constraint firstItem="5t2-Gk-euQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rf9-iC-izg"/>
                             <constraint firstItem="dWE-kN-BvI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="tr0-6s-A29"/>
                         </constraints>
@@ -97,7 +100,7 @@
         <!--Popup View Controller-->
         <scene sceneID="fQR-Sz-BsM">
             <objects>
-                <viewController id="VkS-G1-ReS" customClass="PopupViewController" customModule="MapAPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="VkS-G1-ReS" customClass="PopupViewController" customModule="MapAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="center" id="uA3-h5-D9U">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -283,9 +286,6 @@
                                     <action selector="done:" destination="rPW-Zz-dGf" eventType="touchUpInside" id="yo0-ma-vtw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="download" translatesAutoresizingMaskIntoConstraints="NO" id="q9i-tJ-Qxf">
-                                <rect key="frame" x="16" y="76" width="343" height="118"/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68j-4o-ggf">
                                 <rect key="frame" x="16" y="509" width="343" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,10 +305,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="download" translatesAutoresizingMaskIntoConstraints="NO" id="q9i-tJ-Qxf">
+                                <rect key="frame" x="16" y="76" width="343" height="218"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.8483646373" green="0.8483646373" blue="0.8483646373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="q9i-tJ-Qxf" firstAttribute="centerX" secondItem="5VR-Ip-3xb" secondAttribute="centerX" id="0kI-tt-P6Z"/>
                             <constraint firstItem="g1u-GU-0ct" firstAttribute="trailing" secondItem="68j-4o-ggf" secondAttribute="trailing" constant="16" id="7UK-ES-mtp"/>
                             <constraint firstItem="q9i-tJ-Qxf" firstAttribute="top" secondItem="6so-Ku-Mmf" secondAttribute="bottom" constant="8" id="CqI-OD-xmo"/>
                             <constraint firstItem="68j-4o-ggf" firstAttribute="leading" secondItem="g1u-GU-0ct" secondAttribute="leading" constant="16" id="GVx-F5-Pvs"/>
@@ -317,7 +319,7 @@
                             <constraint firstItem="68j-4o-ggf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q9i-tJ-Qxf" secondAttribute="bottom" constant="8" id="WlU-KF-jmP"/>
                             <constraint firstItem="6so-Ku-Mmf" firstAttribute="top" secondItem="g1u-GU-0ct" secondAttribute="top" constant="16" id="Zft-tn-kAG"/>
                             <constraint firstItem="6so-Ku-Mmf" firstAttribute="leading" secondItem="g1u-GU-0ct" secondAttribute="leading" constant="16" id="cOM-rG-7ca"/>
-                            <constraint firstItem="g1u-GU-0ct" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q9i-tJ-Qxf" secondAttribute="trailing" constant="16" id="daI-Dk-EAC"/>
+                            <constraint firstItem="g1u-GU-0ct" firstAttribute="trailing" secondItem="q9i-tJ-Qxf" secondAttribute="trailing" constant="16" id="daI-Dk-EAC"/>
                             <constraint firstItem="6so-Ku-Mmf" firstAttribute="centerX" secondItem="5VR-Ip-3xb" secondAttribute="centerX" id="g4Y-RE-3F5"/>
                             <constraint firstItem="g1u-GU-0ct" firstAttribute="trailing" secondItem="6so-Ku-Mmf" secondAttribute="trailing" constant="16" id="lbr-ki-BE9"/>
                             <constraint firstItem="q9i-tJ-Qxf" firstAttribute="leading" secondItem="g1u-GU-0ct" secondAttribute="leading" constant="16" id="qXy-vp-8Mm"/>

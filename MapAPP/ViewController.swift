@@ -43,6 +43,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // How accurated the GPS is.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // These two observe if keyboard is shown/hidden
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -296,7 +300,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 1. Check if correct segue
+        // Check if correct segue
         if let id = segue.identifier {
             if id == "popSegue" { // Securing correct segue
                 let destination = segue.destination as! PopupViewController
@@ -317,6 +321,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     // Closing keyboard in searchfield if touch outside of it
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textField.resignFirstResponder()
+    }
+    
+    // Customized so that keyboard showing moves view frame up
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    // Customized so that keyboard hiding moves view frame down
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     override func didReceiveMemoryWarning() {
