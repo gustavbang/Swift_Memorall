@@ -121,18 +121,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Start background thread so that image loading does not make app unresponsive
         DispatchQueue.global(qos: .userInitiated).async {
             
+            // Getting our annotations image as NSData
             let imageData: NSData = NSData(contentsOf: imageUrl)!
             
             // When background task downloaded the data, pin needs to be updated on main_queue
             DispatchQueue.main.async {
-                let image = UIImage(data: imageData as Data)
-                annotation.image = image
                 
-                let detailImageSize = CGSize(width: 150, height: 150)
-                UIGraphicsBeginImageContext(detailImageSize)
-                annotation.image!.draw(in: CGRect(x: 0, y: 0, width: detailImageSize.width * 0.5, height: detailImageSize.height * 0.5))
-                let annotionImageResized = UIGraphicsGetImageFromCurrentImageContext()
-                annotationView.leftCalloutAccessoryView = UIImageView(image: annotionImageResized)
+                // Initializing our image with the data from imageData
+                let image = UIImage(data: imageData as Data)
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: annotationView.frame.height * 2, height: annotationView.frame.height * 2))
+                
+                imageView.image = image
+                imageView.contentMode = .scaleToFill
+                
+                annotationView.leftCalloutAccessoryView = imageView
             }
         }
 

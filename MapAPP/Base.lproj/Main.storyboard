@@ -49,9 +49,9 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-rN-T9L">
-                                <rect key="frame" x="95" y="627" width="200" height="30"/>
+                                <rect key="frame" x="76" y="627" width="219" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="EXw-7Q-r5a"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="219" id="EXw-7Q-r5a"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -173,32 +173,33 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter pin title" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhY-BA-WE7">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter pin title" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhY-BA-WE7">
                                 <rect key="frame" x="16" y="20" width="189" height="30"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES"/>
                                 </accessibility>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                 <connections>
                                     <action selector="textField:" destination="q5b-05-19Z" eventType="editingDidEnd" id="Mi4-XT-9f2"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpH-Ii-jLi">
-                                <rect key="frame" x="128" y="128" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="84" y="201" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Camera">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="cameraBtn:" destination="VkS-G1-ReS" eventType="touchUpInside" id="e3I-ro-tPH"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter short description" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSh-oH-wv2">
-                                <rect key="frame" x="16" y="74" width="189" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter short description" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSh-oH-wv2">
+                                <rect key="frame" x="16" y="58" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES"/>
                                 </accessibility>
@@ -206,20 +207,9 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6F-kH-yS3">
-                                <rect key="frame" x="128" y="252" width="44" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveBtnPressed:" destination="VkS-G1-ReS" eventType="touchUpInside" id="qgg-qb-Zg6"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" text="Enter detailed description here" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GB5-YP-Dr8">
-                                <rect key="frame" x="16" y="166" width="268" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="15" y="108" width="268" height="85"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES"/>
@@ -228,13 +218,26 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4f-eb-noD">
-                                <rect key="frame" x="38" y="128" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="16" y="201" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Album">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="albumBtn:" destination="VkS-G1-ReS" eventType="touchUpInside" id="r94-rh-EH6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6F-kH-yS3">
+                                <rect key="frame" x="226" y="201" width="56" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveBtnPressed:" destination="VkS-G1-ReS" eventType="touchUpInside" id="qgg-qb-Zg6"/>
                                 </connections>
                             </button>
                         </subviews>
