@@ -32,8 +32,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         dbRef = Database.database().reference().child("pins")
         storage = Storage.storage()
         
+        // Initial load and observation of new values (pins)
         loadPins()
-
         
         locationManager.delegate = self
         mapView.delegate = self
@@ -152,7 +152,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBAction func longPressed(recognizer: UILongPressGestureRecognizer) {
         if recognizer.state == .ended { // So you dont make more pins per click
-            print("You pressed loooonng time")
+            print("Pin creation initialized")
             let location = recognizer.location(in: mapView) // CGPoint type, needs to be converted to coordinate
             coordinate2D = mapView.convert(location, toCoordinateFrom: mapView) // Converting
             // Launch popSegue
@@ -171,25 +171,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 DispatchQueue.main.async {
                     self.setRegion(location: location.coordinate)
                 }
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 1. Check if correct segue
-        if let id = segue.identifier {
-            if id == "popSegue" { // Securing correct segue
-                let destination = segue.destination as! PopupViewController
-                destination.parentView = self
-                destination.preferredContentSize = CGSize(width: 300, height: 300)
-                
-                let popPresentationCTRL = destination.popoverPresentationController
-                popPresentationCTRL?.delegate = self
-                
-                // Centralizing our popover instead of it anchoring in top left corner
-                popPresentationCTRL?.sourceView = self.view
-                popPresentationCTRL?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-                
             }
         }
     }
@@ -295,6 +276,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1. Check if correct segue
+        if let id = segue.identifier {
+            if id == "popSegue" { // Securing correct segue
+                let destination = segue.destination as! PopupViewController
+                destination.parentView = self
+                destination.preferredContentSize = CGSize(width: 300, height: 300)
+                
+                let popPresentationCTRL = destination.popoverPresentationController
+                popPresentationCTRL?.delegate = self
+                
+                // Centralizing our popover instead of it anchoring in top left corner
+                popPresentationCTRL?.sourceView = self.view
+                popPresentationCTRL?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
+                
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

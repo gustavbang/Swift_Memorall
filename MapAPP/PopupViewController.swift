@@ -32,6 +32,8 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func cameraBtn(_ sender: Any) {
         print("Take a nice photo, dude")
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
     }
     
     
