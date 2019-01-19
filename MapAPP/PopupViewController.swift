@@ -7,6 +7,13 @@
 //
 import UIKit
 
+enum Types: String {
+    case bar = "Bar"
+    case restaurant = "Restaurant"
+    case attraction = "Attraction"
+    case hotel = "Hotel"
+}
+
 class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var shortDescriptionField: UITextField! // Holds subtitle
@@ -25,8 +32,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
-        
         
     }
     
@@ -86,13 +91,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     // If we touch the screen anywhere keyboard will be dismissed
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    enum Types: String {
-        case bar = "Bar"
-        case restaurant = "Restaurant"
-        case attraction = "Attraction"
-        case hotel = "Hotel"
     }
 
     /*

@@ -179,7 +179,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let adr = textField.text {
             geoCoder.geocodeAddressString(adr) { (placemarks, error) in
                 guard let places = placemarks, let location = places.first?.location else {
-                    print("Incorrect location - use correct format 'Lillebjergvej 24, Hundested'")
+
+                    // Popup message to show user
+                    let alert = UIAlertController(title: "Incorrect address or format", message: "Remember to use correct format, for example 'Lillebjergvej 24, Hundested", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    
+                    self.present(alert, animated: true)
+                    
                     return
                 } // We will get here if adr (and location) is of correct format
                 DispatchQueue.main.async {
