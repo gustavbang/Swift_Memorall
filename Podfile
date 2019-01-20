@@ -12,6 +12,7 @@ target 'MapAPP' do
    pod 'Firebase/Auth'
    pod 'Firebase/Database'
    pod 'Firebase/Storage'
+   pod 'FirebaseUI/Auth'
 
 
   target 'MapAPPTests' do

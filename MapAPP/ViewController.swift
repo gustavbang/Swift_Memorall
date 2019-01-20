@@ -34,7 +34,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         loadPins()
 
-        
+        //?
         locationManager.delegate = self
         mapView.delegate = self
         

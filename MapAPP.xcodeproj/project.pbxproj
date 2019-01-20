@@ -11,6 +11,7 @@
 		84413BC521EB513E00973CB0 /* AnnoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */; };
 		8452C47D2154F22F00EFECE1 /* MyAnno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C47C2154F22F00EFECE1 /* MyAnno.swift */; };
 		8452C47F2154FE3E00EFECE1 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */; };
+		8466A15521F4A82300DD3BCF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A15421F4A82300DD3BCF /* LoginViewController.swift */; };
 		849A49342153828B00AC135B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A49332153828B00AC135B /* AppDelegate.swift */; };
 		849A49362153828B00AC135B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A49352153828B00AC135B /* ViewController.swift */; };
 		849A49392153828B00AC135B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849A49372153828B00AC135B /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoDetailViewController.swift; sourceTree = "<group>"; };
 		8452C47C2154F22F00EFECE1 /* MyAnno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnno.swift; sourceTree = "<group>"; };
 		8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		8466A15421F4A82300DD3BCF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		849A49302153828B00AC135B /* MapAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849A49332153828B00AC135B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849A49352153828B00AC135B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				8452C47E2154FE3E00EFECE1 /* PopupViewController.swift */,
 				84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */,
 				84B80E5621F07787005925C0 /* GoogleService-Info.plist */,
+				8466A15421F4A82300DD3BCF /* LoginViewController.swift */,
 			);
 			path = MapAPP;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				849A492D2153828B00AC135B /* Frameworks */,
 				849A492E2153828B00AC135B /* Resources */,
 				83F633B666A7B1847A40247A /* [CP] Embed Pods Frameworks */,
+				2D021222BA52B229FAEFC91A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,6 +316,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D021222BA52B229FAEFC91A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MapAPP/Pods-MapAPP-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapAPP/Pods-MapAPP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4F32CCB899CC22A517FC92AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8466A15521F4A82300DD3BCF /* LoginViewController.swift in Sources */,
 				84413BC521EB513E00973CB0 /* AnnoDetailViewController.swift in Sources */,
 				849A49362153828B00AC135B /* ViewController.swift in Sources */,
 				8452C47D2154F22F00EFECE1 /* MyAnno.swift in Sources */,
