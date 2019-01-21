@@ -17,13 +17,13 @@ class AnnoDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View did load")
         
-        // Loading content of pin
+        // LOAD CONTENT OF PIN HERE
         pinTitle.text = annotation.title
         pinDescription.text = annotation.descriptionText
         pinPhoto.image = annotation.image
-        
+
+        // Do any additional setup after loading the view.
     }
     
     @IBAction func done(_ sender: Any) {

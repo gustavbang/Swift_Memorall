@@ -15,7 +15,7 @@ enum Types: String {
 }
 
 class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var shortDescriptionField: UITextField! // Holds subtitle
     @IBOutlet weak var descriptionField: UITextView! // Holds descriptionText
     @IBOutlet weak var textField: UITextField! // Holds name / title
@@ -36,7 +36,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     @IBAction func cameraBtn(_ sender: Any) {
-        print("Take a nice photo, dude")
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
@@ -50,7 +49,7 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         parentView?.addAnnotation(name: textField.text!, subtitle: shortDescriptionField.text!, text: descriptionField.text!, picture: photo, type: type)
         parentView?.dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func handleSelection(_ sender: Any) {
         typeButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
@@ -92,15 +91,15 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

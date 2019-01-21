@@ -48,7 +48,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             setRegion(location: location.coordinate)
@@ -141,7 +141,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 annotationView.leftCalloutAccessoryView = imageView
             }
         }
-
+        
         // Makes us able to show extra info, such as image or text
         annotationView.canShowCallout = true
         return annotationView
@@ -179,7 +179,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let adr = textField.text {
             geoCoder.geocodeAddressString(adr) { (placemarks, error) in
                 guard let places = placemarks, let location = places.first?.location else {
-
+                    
                     // Popup message to show user
                     let alert = UIAlertController(title: "Incorrect address or format", message: "Remember to use correct format, for example 'Lillebjergvej 24, Hundested", preferredStyle: .alert)
                     
@@ -264,7 +264,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     let id = data.key
                     let title = dict["title"] ?? ""
                     let subtitle = dict["subtitle"] ?? ""
-
+                    
                     // Putting together our coordinate with longitude and latitude
                     var coordinate: CLLocationCoordinate2D
                     if let lat = dict["latitude"], let doubleLat = Double(lat), let long = dict["longitude"], let doubleLong = Double(long) {
@@ -276,7 +276,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     let imageUrl = dict["imageUrl"] ?? ""
                     let type = dict["type"] ?? ""
                     let descriptionText = dict["descriptionText"] ?? ""
-                
+                    
                     let pin = MyAnno(id: id, title: title, subtitle: subtitle, imageUrl: imageUrl, coordinate: coordinate, type: type, descriptionText: descriptionText)
                     
                     // If imageUrl is not "", then we have a custom picture

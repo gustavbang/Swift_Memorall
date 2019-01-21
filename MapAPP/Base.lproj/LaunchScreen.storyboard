@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,37 +15,36 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memorall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD5-Jp-zqk">
-                                <rect key="frame" x="16" y="74" width="382" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memorall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWw-av-viY">
+                                <rect key="frame" x="0.0" y="28" width="375" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One app to guide you all" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgk-jF-wGC">
-                                <rect key="frame" x="16" y="118" width="382" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One app to guide you all" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdW-N1-GsM">
+                                <rect key="frame" x="0.0" y="72" width="375" height="24"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="UFJ-BN-df7">
-                                <rect key="frame" x="16" y="158" width="382" height="693"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currentlocation" translatesAutoresizingMaskIntoConstraints="NO" id="peM-86-VtP">
+                                <rect key="frame" x="16" y="104" width="343" height="512"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zgk-jF-wGC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0sW-nJ-vLS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zgk-jF-wGC" secondAttribute="trailing" constant="16" id="Ept-bc-8f6"/>
-                            <constraint firstItem="UFJ-BN-df7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FqJ-bY-m1p"/>
-                            <constraint firstItem="UFJ-BN-df7" firstAttribute="top" secondItem="zgk-jF-wGC" secondAttribute="bottom" constant="16" id="WBL-Tb-qap"/>
-                            <constraint firstItem="zgk-jF-wGC" firstAttribute="top" secondItem="uD5-Jp-zqk" secondAttribute="bottom" constant="8" id="XJy-9e-MqB"/>
-                            <constraint firstItem="uD5-Jp-zqk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XhK-g6-IHL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uD5-Jp-zqk" secondAttribute="trailing" constant="16" id="Y4q-bf-4MG"/>
-                            <constraint firstItem="uD5-Jp-zqk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="qU2-p1-yuS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UFJ-BN-df7" secondAttribute="trailing" constant="16" id="twP-jZ-Nmx"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UFJ-BN-df7" secondAttribute="bottom" constant="16" id="yET-kB-Hvc"/>
+                            <constraint firstItem="KdW-N1-GsM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="01k-Sw-M1A"/>
+                            <constraint firstItem="HWw-av-viY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9WV-Tu-LKf"/>
+                            <constraint firstItem="KdW-N1-GsM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JdX-ML-HrI"/>
+                            <constraint firstItem="HWw-av-viY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="JfA-Ad-3RA"/>
+                            <constraint firstItem="peM-86-VtP" firstAttribute="top" secondItem="KdW-N1-GsM" secondAttribute="bottom" constant="8" id="Ryg-me-0i1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="peM-86-VtP" secondAttribute="trailing" constant="16" id="XUw-Uw-eHp"/>
+                            <constraint firstItem="HWw-av-viY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bPU-uA-JXk"/>
+                            <constraint firstItem="KdW-N1-GsM" firstAttribute="top" secondItem="HWw-av-viY" secondAttribute="bottom" constant="8" id="neC-3l-gop"/>
+                            <constraint firstItem="peM-86-VtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="r5i-nI-r9F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -56,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchscreen" width="334" height="693"/>
+        <image name="currentlocation" width="456" height="512"/>
     </resources>
 </document>
