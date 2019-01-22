@@ -20,6 +20,9 @@ class AnnoEditTableViewController: UITableViewController {
         super.viewDidLoad()
         dbRef = Database.database().reference()
         
+        navigationItem.title = "Details of pin"
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -52,7 +55,7 @@ class AnnoEditTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: { (action, indexPath) in
             let alert = UIAlertController(title: "", message: "Edit your pin", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
                 textField.text = self.annoArray[indexPath.row]

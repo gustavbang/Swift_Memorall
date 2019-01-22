@@ -24,6 +24,9 @@ class AnnoTableViewController: UITableViewController {
         //Firebase
         dbRef = Database.database().reference().child("pins")
         storage = Storage.storage()
+        
+        navigationItem.title = "List of pins"
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -9,14 +9,12 @@
 import UIKit
 import FirebaseUI
 
-
 class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
 
     @IBAction func loginPressed(_ sender: UIButton) {
         //Get default of UI Object
@@ -37,8 +35,6 @@ class LoginViewController: UIViewController {
     }
 
 }
-
-
 
 extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {

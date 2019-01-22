@@ -23,7 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var dbRef: DatabaseReference?
     var storage: Storage?
     
-    // Array for our annotations (currently not used)
+    // Array for our annotations
     var annotations = [MyAnno]()
     
     override func viewDidLoad() {
@@ -43,10 +43,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // How accurated the GPS is.
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        
+                
         // These two observe if keyboard is shown/hidden
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        navigationItem.title = "Map"
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -154,12 +157,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.present(vc, animated: true, completion: nil)
     }
     
+    // Pin creations first step - pressing the screen where u want pin
     @IBAction func longPressed(recognizer: UILongPressGestureRecognizer) {
         if recognizer.state == .ended { // So you dont make more pins per click
             print("Pin creation initialized")
             let location = recognizer.location(in: mapView) // CGPoint type, needs to be converted to coordinate
             coordinate2D = mapView.convert(location, toCoordinateFrom: mapView) // Converting
-            // Launch popSegue
+            
+            // Launch popSegue to type info about pin and save
             self.performSegue(withIdentifier: "popSegue", sender: self)
         }
     }
@@ -351,6 +356,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.view.frame.origin.y = 0
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
