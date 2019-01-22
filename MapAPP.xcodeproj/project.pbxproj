@@ -19,6 +19,8 @@
 		849A493E2153828E00AC135B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849A493C2153828E00AC135B /* LaunchScreen.storyboard */; };
 		849A49492153828E00AC135B /* MapAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A49482153828E00AC135B /* MapAPPTests.swift */; };
 		849A49542153828E00AC135B /* MapAPPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A49532153828E00AC135B /* MapAPPUITests.swift */; };
+		84B7C72521F70F4B007F1296 /* AnnoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C72421F70F4B007F1296 /* AnnoTableViewController.swift */; };
+		84B7C72721F73230007F1296 /* AnnoEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C72621F73230007F1296 /* AnnoEditTableViewController.swift */; };
 		84B80E5721F07787005925C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B80E5621F07787005925C0 /* GoogleService-Info.plist */; };
 		F199AEA3144C9FFC714FECE6 /* Pods_MapAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465FF5EFD860BA2BAF35E473 /* Pods_MapAPP.framework */; };
 		F3FC6287DC5B69BE97DEEE04 /* Pods_MapAPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FCCDB04C7A36A58853F46B /* Pods_MapAPPTests.framework */; };
@@ -63,6 +65,8 @@
 		849A494F2153828E00AC135B /* MapAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		849A49532153828E00AC135B /* MapAPPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAPPUITests.swift; sourceTree = "<group>"; };
 		849A49552153828E00AC135B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B7C72421F70F4B007F1296 /* AnnoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoTableViewController.swift; sourceTree = "<group>"; };
+		84B7C72621F73230007F1296 /* AnnoEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoEditTableViewController.swift; sourceTree = "<group>"; };
 		84B80E5621F07787005925C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DC950BE952A9BF115591186 /* Pods-MapAPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapAPPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapAPPTests/Pods-MapAPPTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB72DD2484571AD85FB47697 /* Pods_MapAPPUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapAPPUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +152,8 @@
 				84413BC421EB513E00973CB0 /* AnnoDetailViewController.swift */,
 				84B80E5621F07787005925C0 /* GoogleService-Info.plist */,
 				8466A15421F4A82300DD3BCF /* LoginViewController.swift */,
+				84B7C72421F70F4B007F1296 /* AnnoTableViewController.swift */,
+				84B7C72621F73230007F1296 /* AnnoEditTableViewController.swift */,
 			);
 			path = MapAPP;
 			sourceTree = "<group>";
@@ -441,10 +447,12 @@
 			files = (
 				8466A15521F4A82300DD3BCF /* LoginViewController.swift in Sources */,
 				84413BC521EB513E00973CB0 /* AnnoDetailViewController.swift in Sources */,
+				84B7C72521F70F4B007F1296 /* AnnoTableViewController.swift in Sources */,
 				849A49362153828B00AC135B /* ViewController.swift in Sources */,
 				8452C47D2154F22F00EFECE1 /* MyAnno.swift in Sources */,
 				849A49342153828B00AC135B /* AppDelegate.swift in Sources */,
 				8452C47F2154FE3E00EFECE1 /* PopupViewController.swift in Sources */,
+				84B7C72721F73230007F1296 /* AnnoEditTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

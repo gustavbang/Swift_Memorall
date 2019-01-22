@@ -42,7 +42,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestWhenInUseAuthorization()
         
         // How accurated the GPS is.
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         // These two observe if keyboard is shown/hidden
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -64,8 +64,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         switch status {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
+//            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingHeading()
         default:
             mapView.showsUserLocation = false
             return
@@ -254,11 +254,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func loadPins() {
         dbRef?.queryOrdered(byChild: "title").observe(.value, with: { (snapshot) in
             // Empties our annotations array, so it is not dublicated
+            self.mapView.removeAnnotations(self.annotations)
             self.annotations = [MyAnno]()
             
             // Each child is a MyAnno object, or will be soon ;-)
             for child in snapshot.children {
+
                 if let data = child as? DataSnapshot {
+
                     let dict = data.value as! [String: String] // Ex. dict["title"] has title as value
                     
                     let id = data.key
@@ -320,7 +323,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 // Centralizing our popover instead of it anchoring in top left corner
                 popPresentationCTRL?.sourceView = self.view
                 popPresentationCTRL?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-                
+            }
+            if id == "showAnnoList" {
+                let destination = segue.destination as! AnnoTableViewController
+                destination.annotations = annotations
             }
         }
     }

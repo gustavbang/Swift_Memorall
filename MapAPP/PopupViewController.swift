@@ -50,15 +50,6 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
         parentView?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func handleSelection(_ sender: Any) {
-        typeButtons.forEach { (button) in
-            UIView.animate(withDuration: 0.3, animations: {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
-    
     @IBAction func typePressed(_ sender: UIButton) {
         guard let title = sender.currentTitle, let types = Types(rawValue: title) else {
             return
@@ -78,6 +69,15 @@ class PopupViewController: UIViewController, UIImagePickerControllerDelegate, UI
             typeButton.setTitle("Hotel", for: .normal)
         }
         handleSelection(self)
+    }
+    
+    @IBAction func handleSelection(_ sender: Any) {
+        typeButtons.forEach { (button) in
+            UIView.animate(withDuration: 0.3, animations: {
+                button.isHidden = !button.isHidden
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
