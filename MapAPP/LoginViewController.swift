@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseUI
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FUIAuthDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +34,6 @@ class LoginViewController: UIViewController {
         present(authViewController, animated: true, completion: nil)
     }
 
-}
-
-extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //Check if there is an error (Error is 0 means no errors)
         if error != nil {
@@ -49,3 +46,7 @@ extension LoginViewController: FUIAuthDelegate {
         performSegue(withIdentifier: "goHome", sender: self)
     }
 }
+
+//extension LoginViewController: FUIAuthDelegate {
+//
+//}

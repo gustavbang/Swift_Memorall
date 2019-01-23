@@ -52,12 +52,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            setRegion(location: location.coordinate)
-        }
-    }
-    
+    // Sets the region of the map, that you see centered around your location
     func setRegion(location: CLLocationCoordinate2D) {
         let reg = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(reg, animated: true)
@@ -80,6 +75,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print(error)
     }
     
+    // Defines how the annotations will look
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = MKAnnotationView()
         
@@ -150,6 +146,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return annotationView
     }
     
+    // Is called when you in your annotation presses the info btn
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "annoDetail") as! AnnoDetailViewController
         
@@ -268,7 +265,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 if let data = child as? DataSnapshot {
 
                     let dict = data.value as! [String: String] // Ex. dict["title"] has title as value
-                    
+        
                     let id = data.key
                     let title = dict["title"] ?? ""
                     let subtitle = dict["subtitle"] ?? ""
@@ -278,6 +275,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     if let lat = dict["latitude"], let doubleLat = Double(lat), let long = dict["longitude"], let doubleLong = Double(long) {
                         coordinate = CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong)
                     } else {
+                        print("Not able to set coordinates, putting standard location of 0,0 in")
                         coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
                     }
                     
@@ -371,4 +369,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //    // Used to check if location changed after locationManager.startUpdatingLocation() is called
+    //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //        if let location = locations.first {
+    //            setRegion(location: location.coordinate)
+    //        }
+    //    }
+
 }
