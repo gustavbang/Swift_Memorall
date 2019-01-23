@@ -85,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dWE-kN-BvI">
-                                <rect key="frame" x="16" y="8" width="343" height="544"/>
+                                <rect key="frame" x="16" y="8" width="343" height="546"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Xah-bb-pzO" appends="YES" id="MRd-bH-0P9"/>
@@ -108,17 +108,6 @@
                                     <action selector="goButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ra0-Yf-GP8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-4y-fQ7">
-                                <rect key="frame" x="16" y="565" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7ez-0f-yyA"/>
-                                    <constraint firstAttribute="width" constant="30" id="y7J-a6-Dsx"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="currentlocation"/>
-                                <connections>
-                                    <action selector="currentLocationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eRj-6t-nqO"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-rN-T9L">
                                 <rect key="frame" x="95" y="627" width="200" height="30"/>
                                 <constraints>
@@ -134,9 +123,20 @@
                                     <constraint firstAttribute="height" constant="35" id="B1A-jc-7wz"/>
                                     <constraint firstAttribute="width" constant="35" id="R2W-3G-kyt"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="listicon"/>
+                                <state key="normal" title="Button" image="listviewicon"/>
                                 <connections>
                                     <segue destination="elQ-ru-aEX" kind="show" identifier="showAnnoList" id="WBC-O1-wv3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-4y-fQ7">
+                                <rect key="frame" x="16" y="562" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7ez-0f-yyA"/>
+                                    <constraint firstAttribute="width" constant="30" id="y7J-a6-Dsx"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="pinicon-2"/>
+                                <connections>
+                                    <action selector="currentLocationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eRj-6t-nqO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -148,10 +148,12 @@
                             <constraint firstItem="dWE-kN-BvI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Izf-Lo-YmS"/>
                             <constraint firstItem="WYD-rN-T9L" firstAttribute="top" secondItem="mhs-X2-4Wp" secondAttribute="top" id="NST-YA-PFN"/>
                             <constraint firstItem="mhs-X2-4Wp" firstAttribute="leading" secondItem="WYD-rN-T9L" secondAttribute="trailing" constant="8" id="Qzf-sy-7dw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9ec-4y-fQ7" secondAttribute="bottom" constant="11" id="Vpt-jr-b5r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="f1Y-hX-02c" secondAttribute="bottom" constant="8" id="WZk-jy-Hgm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mhs-X2-4Wp" secondAttribute="bottom" constant="10" id="Z00-JZ-NoF"/>
                             <constraint firstItem="mhs-X2-4Wp" firstAttribute="top" secondItem="dWE-kN-BvI" secondAttribute="bottom" constant="13" id="ZVI-5U-Fe5"/>
                             <constraint firstItem="9ec-4y-fQ7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZwH-BG-yJw"/>
+                            <constraint firstItem="9ec-4y-fQ7" firstAttribute="top" secondItem="dWE-kN-BvI" secondAttribute="bottom" constant="8" id="dGg-oR-spN"/>
                             <constraint firstItem="f1Y-hX-02c" firstAttribute="leading" secondItem="9ec-4y-fQ7" secondAttribute="trailing" constant="8" id="j2W-in-ltZ"/>
                             <constraint firstItem="dWE-kN-BvI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="w2d-9o-d1m"/>
                         </constraints>
@@ -578,10 +580,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="currentlocation" width="456" height="512"/>
         <image name="download" width="189" height="118"/>
-        <image name="listicon" width="512" height="512"/>
+        <image name="listviewicon" width="234" height="246"/>
         <image name="loginknap" width="454" height="70"/>
         <image name="logo" width="238" height="63"/>
+        <image name="pinicon-2" width="388" height="500"/>
     </resources>
 </document>
