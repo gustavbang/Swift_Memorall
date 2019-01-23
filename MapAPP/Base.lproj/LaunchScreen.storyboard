@@ -18,33 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memorall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWw-av-viY">
-                                <rect key="frame" x="0.0" y="28" width="375" height="36"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One app to guide you all" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdW-N1-GsM">
-                                <rect key="frame" x="0.0" y="72" width="375" height="24"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currentlocation" translatesAutoresizingMaskIntoConstraints="NO" id="peM-86-VtP">
-                                <rect key="frame" x="16" y="104" width="343" height="512"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NCc-ds-Muq">
+                                <rect key="frame" x="0.0" y="290" width="375" height="87"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="peM-86-VtP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One app to guide you all" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdW-N1-GsM">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0087397666650000008" green="0.1246541813" blue="0.15183749790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KdW-N1-GsM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="01k-Sw-M1A"/>
-                            <constraint firstItem="HWw-av-viY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9WV-Tu-LKf"/>
-                            <constraint firstItem="KdW-N1-GsM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JdX-ML-HrI"/>
-                            <constraint firstItem="HWw-av-viY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="JfA-Ad-3RA"/>
-                            <constraint firstItem="peM-86-VtP" firstAttribute="top" secondItem="KdW-N1-GsM" secondAttribute="bottom" constant="8" id="Ryg-me-0i1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="peM-86-VtP" secondAttribute="trailing" constant="16" id="XUw-Uw-eHp"/>
-                            <constraint firstItem="HWw-av-viY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bPU-uA-JXk"/>
-                            <constraint firstItem="KdW-N1-GsM" firstAttribute="top" secondItem="HWw-av-viY" secondAttribute="bottom" constant="8" id="neC-3l-gop"/>
-                            <constraint firstItem="peM-86-VtP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="r5i-nI-r9F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NCc-ds-Muq" secondAttribute="trailing" id="4EF-KT-y0C"/>
+                            <constraint firstItem="NCc-ds-Muq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k7J-2Y-kaE"/>
+                            <constraint firstItem="NCc-ds-Muq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nkI-6L-2Ny"/>
+                            <constraint firstItem="NCc-ds-Muq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rzz-iC-d65"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -55,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="currentlocation" width="456" height="512"/>
+        <image name="logo" width="238" height="63"/>
     </resources>
 </document>
